@@ -1,5 +1,7 @@
 import './App.css';
 import React from "react";
+import Form from './components/Form.js'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +9,7 @@ import {
   Link
 } from "react-router-dom";
 
-export default function BasicExample() {
+export default function App() {
   return (
     <Router>
       <div>
@@ -19,7 +21,10 @@ export default function BasicExample() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/savedtrips">Saved Trips</Link>
+          </li>
+          <li>
+            <Link to="/createtrip">Create New Trip</Link>
           </li>
         </ul>
 
@@ -39,8 +44,11 @@ export default function BasicExample() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route path="/savedtrips">
+            <Savedtrips />
+          </Route>
+          <Route exact path="/createtrip">
+            <CreateTrip />
           </Route>
         </Switch>
       </div>
@@ -61,15 +69,24 @@ function About() {
   return (
     <div>
       <h2>About</h2>
+
     </div>
   );
 }
 
-function Dashboard() {
+function Savedtrips() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Saved Trips</h2>
     </div>
   );
 }
 
+function CreateTrip() {
+  return (
+    <div>
+      <h2>Create a new Trip</h2>
+      <Form />
+    </div>
+  );
+}
