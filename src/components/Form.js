@@ -23,19 +23,11 @@ const Form = (props) => {
       "transportation" : formData.transportation
     }
 
-    let test = {
-      "name": "test",
-      "location": "test",
-      "startdate": "2021-12-12",
-      "enddate": "2021-12-12",
-      "transportation": "car"
-    };
     console.log(newTrip)
-    console.log(test)
-
-    // console.log(formData);
     const resp =  await axios.post(`http://localhost:9090/trips`, newTrip);
-    console.log(resp);
+    console.log(resp.data.id);
+
+
   };
 
   // Method causes to store all the values of the 
@@ -76,7 +68,7 @@ const Form = (props) => {
         <label htmlFor='startdate'>Start Date</label>
         <input
           name='startdate'
-          placeholder='mm/dd/yyyy'
+          placeholder='yyyy-mm-dd'
           onChange={e => setFormData({ ...formData, startdate: e.target.value })}
         />
       </div>
@@ -84,7 +76,7 @@ const Form = (props) => {
         <label htmlFor='enddate'>End Date</label>
         <input
           name='enddate'
-          placeholder='mm/dd/yyyy'
+          placeholder='yyyy-mm-dd'
           onChange={e => setFormData({ ...formData, enddate: e.target.value })}
         />
       </div>
