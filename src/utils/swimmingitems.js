@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-
-
-export const generateSwimmingItems = async (items, trip_id) =>{
+export const generateSwimmingItems = async (trip_id) =>{
 
     const swimmingsuit = {
         "name": "swimming suit",
@@ -20,21 +18,9 @@ export const generateSwimmingItems = async (items, trip_id) =>{
         "packed": false
     }
 
-
-
-
       console.log(trip_id)
-      const newitem1 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, swimmingsuit);
-      const newitem2 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, sunscreen);
-      const newitem3 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, sandals);
+      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, swimmingsuit);
+      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sunscreen);
+      const newitem3 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sandals);
 
     };
-
-// export default generateSwimmingItems;
-
-
-// export const toppings = [
-//     {
-//       name: "Capsicum",
-//       price: 1.2
-//     }]

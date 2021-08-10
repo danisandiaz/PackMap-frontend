@@ -1,6 +1,8 @@
 import './App.css';
 import React from "react";
-import Form from './components/Form.js'
+import TripForm from './components/Form.js'
+import SavedTrips from './components/SavedTrips.js'
+
 
 import {
   BrowserRouter as Router,
@@ -11,10 +13,10 @@ import {
 
 export default function App() {
   return (
-    <Router>
-      <div>
+    <Router >
+      <div className='grad'>
         <ul>
-          <li>
+          <li >
             <Link to="/">Home</Link>
           </li>
           <li>
@@ -50,6 +52,7 @@ export default function App() {
           <Route exact path="/createtrip">
             <CreateTrip />
           </Route>
+
         </Switch>
       </div>
     </Router>
@@ -59,7 +62,7 @@ export default function App() {
 
 function Home() {
   return (
-    <div>
+    <div >
       <h2>Home</h2>
     </div>
   );
@@ -77,7 +80,7 @@ function About() {
 function Savedtrips() {
   return (
     <div>
-      <h2>Saved Trips</h2>
+      <SavedTrips />
     </div>
   );
 }
@@ -86,7 +89,7 @@ function CreateTrip() {
   return (
     <div>
       <h2>Create a new Trip</h2>
-      <Form />
+      <TripForm />
     </div>
   );
 }

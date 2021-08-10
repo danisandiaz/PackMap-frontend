@@ -14,6 +14,6 @@ export const generateSightseeingItems = async (trip_id) =>{
     }
 
       console.log(trip_id)
-      const newitem1 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, sneakers);
-      const newitem2 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, camera);
+      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sneakers);
+      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, camera);
     };
