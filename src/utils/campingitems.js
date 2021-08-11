@@ -23,7 +23,6 @@ export const generateCampingItems = async (trip_id) =>{
         "packed": false
     }
 
-      console.log(trip_id)
       const newitem1 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, waterbottle);
       const newitem2 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, sunscreen);
       const newitem3 =  await axios.post(`http://localhost:9090/trips/${trip_id}/item`, tent);

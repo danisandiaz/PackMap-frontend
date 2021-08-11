@@ -13,15 +13,6 @@ import './Form.css';
 
 
 
-const temp = {
-  "name" : "2021-11-11",
-  "location" : "2021-11-11",
-  "startdate" : "2021-11-11",
-  "enddate" : "2021-11-11",
-  "transportation" : "2021-11-11"
-}
-
-
 const TripForm = (props) => {
 
   const [formData, setFormData] = useState(
@@ -33,10 +24,6 @@ const TripForm = (props) => {
   const history = useHistory();
 
 
-  function handleSubmit() {
-    createNewTrip();
-  }
-
   const createNewTrip = (event) => {
     event.preventDefault();
     const newTrip = {
@@ -47,8 +34,8 @@ const TripForm = (props) => {
       "transportation" : formData.transportation
     }
     console.log(items);
+    console.log(newTrip);
 
-    console.log(temp)
     axios.post(`http://localhost:8080/trips`, newTrip
     ).then((response) =>{
     // console.log(newtripid)
@@ -71,7 +58,7 @@ const TripForm = (props) => {
     console.log("done!");
     });
 
-    history.push("/");
+    history.push('/savedtrips');
   };
 
   return (
