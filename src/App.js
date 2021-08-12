@@ -1,44 +1,57 @@
 import './App.css';
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TripForm from './components/Form.js'
 import SavedTrips from './components/SavedTrips.js'
-
+import OneTripSummary from './components/OneTripSummary.js'
+import {Navbar, Nav} from 'react-bootstrap'
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router, Switch, Route
 } from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap'
+
 
 export default function App() {
+  const [SelectedTripId, setSelectedTripId] = useState(189);
+
   return (
+    <div className="grad">
     <Router >
-      <div className='grad'>
-        <ul>
-          <li >
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/savedtrips">Saved Trips</Link>
-          </li>
-          <li>
-            <Link to="/createtrip">Create New Trip</Link>
-          </li>
-        </ul>
+      <Navbar bg="light" expand="lg">
+   
+            <LinkContainer to="/"><Navbar.Brand>Home</Navbar.Brand></LinkContainer>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+
+          <Nav className="mr-auto">
+
+            <LinkContainer to="/about"><Nav.Link>About</Nav.Link></LinkContainer>
+
+            <LinkContainer to="/savedtrips"><Nav.Link>Saved Trips</Nav.Link></LinkContainer>
+
+            <LinkContainer to="/createtrip"><Nav.Link>Create New Trip</Nav.Link></LinkContainer>
+            </Nav>
+            </Navbar.Collapse>
+      </Navbar>
+
+
+      {/* // <div className="grad">
+      //   <ul>
+      //     <li >
+      //       <Link to="/">Home</Link>
+      //     </li>
+      //     <li>
+      //       <Link to="/about">About</Link>
+      //     </li>
+      //     <li>
+      //       <Link to="/savedtrips">Saved Trips</Link>
+      //     </li>
+      //     <li>
+      //       <Link to="/createtrip">Create New Trip</Link>
+      //     </li>
+      //   </ul> */}
 
         <hr />
-
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
         <Switch>
           <Route exact path="/">
             <Home />
@@ -47,15 +60,22 @@ export default function App() {
             <About />
           </Route>
           <Route path="/savedtrips">
-            <Savedtrips />
+            <SavedTrips
+              selectTrip={setSelectedTripId}
+            />
           </Route>
           <Route exact path="/createtrip">
             <CreateTrip />
           </Route>
+          <Route path="/onetrip">
+            <OneTrip
+              SelectedTripId={SelectedTripId}
+            />
+          </Route>
 
         </Switch>
-      </div>
     </Router>
+    </div>
   );
 }
 
@@ -77,14 +97,6 @@ function About() {
   );
 }
 
-function Savedtrips() {
-  return (
-    <div>
-      <SavedTrips />
-    </div>
-  );
-}
-
 function CreateTrip() {
   return (
     <div>
@@ -92,4 +104,19 @@ function CreateTrip() {
       <TripForm />
     </div>
   );
-}
+};
+
+const OneTrip = (props) => {
+
+  console.log("inside onetrip function")
+
+  return (
+    <div>
+      <h2>Trip Summary</h2>
+      <OneTripSummary selectTripId = {props.SelectedTripId}
+      
+      />
+
+    </div>
+  );
+};

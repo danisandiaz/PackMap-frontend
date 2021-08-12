@@ -8,11 +8,11 @@ import './Trip.css';
 const Trip = ({showtrip, tripdetails}) => {
 
     return (
-        <div>
+        <div className= "triplocation">
             
         <div flex-column className= 'tripgroupbutton'>
         <ButtonGroup>
-            <Button onClick={() =>{ showtrip(tripdetails.id)}} variant="outline-secondary" className= 'tripgroupbutton' id='tripbutton'>
+            <Button onClick={() => showtrip(tripdetails.id)} variant="outline-secondary" className= 'tripgroupbutton' id='tripbutton'>
             <h4 > Trip Name: {tripdetails.name}</h4>
             <div><p>{tripdetails.location} {tripdetails.id}</p></div>
             </Button> 

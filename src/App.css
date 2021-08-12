@@ -6,7 +6,7 @@
   background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   /* background-image: linear-gradient(lightblue, grey,white); */
-  height: max-content;
+  height:100vh;
 }
 
 .App-header {
@@ -22,5 +22,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+h2 {
+  margin-left: 2%;
+
 }
 
