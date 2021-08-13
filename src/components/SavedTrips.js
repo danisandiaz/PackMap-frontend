@@ -43,7 +43,7 @@ export default function SavedTrips({selectTrip}) {
     });
 
     return (
-        <div>
+        <div className="page-height">
             <div >
             <h2>Saved Trips</h2>
             {tripElements}

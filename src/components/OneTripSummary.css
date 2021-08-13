@@ -1,4 +1,21 @@
+.locationheader {
+
+    color:rgb(98, 99, 104);
+
+}
+
+
+
+.packinglist {
+    margin-left: 3%;
+    margin-right: 4%;
+    border-style: solid;
+    border-color: indianred;
+    background-color: white;
+    padding: 2%;
+}
 
 .Summarybody {
-    margin-left: 3%
+    margin-left: 3%;
+    height: 100vh;
 }

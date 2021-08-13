@@ -3,7 +3,13 @@ import React, { useState, useEffect } from "react";
 import TripForm from './components/Form.js'
 import SavedTrips from './components/SavedTrips.js'
 import OneTripSummary from './components/OneTripSummary.js'
+import CreateTrip from './components/CreateTrip.js'
+import Login from './components/Login.js'
+
+
 import {Navbar, Nav} from 'react-bootstrap'
+import logo from './PackMap.png';
+
 
 import {
   BrowserRouter as Router, Switch, Route
@@ -15,11 +21,11 @@ export default function App() {
   const [SelectedTripId, setSelectedTripId] = useState(189);
 
   return (
-    <div className="grad">
+    <div className={"grad"} >
     <Router >
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className={"App-header"}>
    
-            <LinkContainer to="/"><Navbar.Brand>Home</Navbar.Brand></LinkContainer>
+            <LinkContainer to="/"><img src={logo} alt="Logo" className={"logoimage"}/></LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
 
@@ -31,25 +37,10 @@ export default function App() {
 
             <LinkContainer to="/createtrip"><Nav.Link>Create New Trip</Nav.Link></LinkContainer>
             </Nav>
+            
             </Navbar.Collapse>
+            
       </Navbar>
-
-
-      {/* // <div className="grad">
-      //   <ul>
-      //     <li >
-      //       <Link to="/">Home</Link>
-      //     </li>
-      //     <li>
-      //       <Link to="/about">About</Link>
-      //     </li>
-      //     <li>
-      //       <Link to="/savedtrips">Saved Trips</Link>
-      //     </li>
-      //     <li>
-      //       <Link to="/createtrip">Create New Trip</Link>
-      //     </li>
-      //   </ul> */}
 
         <hr />
         <Switch>
@@ -82,29 +73,21 @@ export default function App() {
 
 function Home() {
   return (
-    <div >
-      <h2>Home</h2>
+    <div className="page-height">
+      <Login/>
     </div>
   );
 }
 
 function About() {
   return (
-    <div>
+    <div className="page-height">
       <h2>About</h2>
 
     </div>
   );
 }
 
-function CreateTrip() {
-  return (
-    <div>
-      <h2>Create a new Trip</h2>
-      <TripForm />
-    </div>
-  );
-};
 
 const OneTrip = (props) => {
 

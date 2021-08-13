@@ -1,0 +1,18 @@
+* {
+    border: 10px;
+    border-color: brown;
+}
+
+.login {
+    padding:10%;
+}
+.headerlogin{
+    display:flex;
+    align-items: center;
+    margin-left:43%
+
+}
+h4 {
+    align-self: center;
+    
+}

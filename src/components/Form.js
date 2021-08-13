@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 import { generateSwimmingItems } from '../utils/swimmingitems.js';
 import { generateHikingItems } from '../utils/hikingitems.js';
 import { generateSightseeingItems } from '../utils/sightseeingitems.js';
@@ -66,7 +68,7 @@ const TripForm = (props) => {
     <Container className= 'formcontainer'>
       <Form>
         <Form.Group>
-        <Form.Label htmlFor='trip'>Name Your Trip :</Form.Label>
+        <Form.Label htmlFor='trip'><h6>Name Your Trip :</h6></Form.Label>
         <Form.Control
           name='trip'
           placeholder='trip'
@@ -74,7 +76,7 @@ const TripForm = (props) => {
         />
         </Form.Group>
       <div>
-        <Form.Label htmlFor='location'>Where are you going?</Form.Label>
+        <Form.Label htmlFor='location'><h6>Where are you going?</h6></Form.Label>
         <Form.Control
           name='location'
           placeholder='location'
@@ -82,7 +84,7 @@ const TripForm = (props) => {
         />
       </div>
       <div>
-        <Form.Label htmlFor='startdate'>Start Date</Form.Label>
+        <Form.Label htmlFor='startdate'><h6>Start Date</h6></Form.Label>
         <Form.Control
           name='startdate'
           placeholder='yyyy-mm-dd'
@@ -90,7 +92,7 @@ const TripForm = (props) => {
         />
       </div>
       <div>
-        <Form.Label htmlFor='enddate'>End Date</Form.Label>
+        <Form.Label htmlFor='enddate'><h6>End Date</h6></Form.Label>
         <Form.Control
           name='enddate'
           placeholder='yyyy-mm-dd'
@@ -99,7 +101,7 @@ const TripForm = (props) => {
       </div>
       <br/>
       <Form.Group >
-        <Form.Label htmlFor='transportation'>Transportation</Form.Label>
+        <Form.Label htmlFor='transportation'><h5>Transportation</h5></Form.Label>
         <br/>
               <Form.Check
                 inline
@@ -130,16 +132,16 @@ const TripForm = (props) => {
       <br/>
       <Form.Group>
       <div > 
-        <label htmlFor='Trip Activities'>Trip Activities</label>
+        <label htmlFor='Trip Activities'><h5>Trip Activities</h5></label>
         <br/>
               <div>
               <Form.Check
                 inline
                 type="checkbox"
                 name="swimming"
-                value = {true}
+                value = {items.swimming}
                 label = "swimming"
-                onClick={e => {setItems({ ...items, swimming: e.target.value })}}
+                onClick={e => {setItems({ ...items, swimming: !items.swimming})}}
               />
               </div>
               <div>
@@ -147,9 +149,11 @@ const TripForm = (props) => {
                 inline
                 type="checkbox"
                 name="hiking"
-                value={true}
+                value={items.hiking}
                 label = "hiking"
-                onClick={e => setItems({ ...items, hiking: e.target.value })}
+                onClick={(e) => {
+               
+                  setItems({ ...items, hiking: !items.hiking})}}
               />
               </div>
               <div>
@@ -157,9 +161,9 @@ const TripForm = (props) => {
                 inline              
                 type="checkbox"
                 name="sightseeing"
-                value={true}
+                value={items.sightseeing}
                 label = "sightseeing"
-                onClick={e => setItems({ ...items, sightseeing: e.target.value })}
+                onClick={e => setItems({ ...items, sightseeing: !items.sightseeing })}
               />
               </div>
               <div>
@@ -167,9 +171,9 @@ const TripForm = (props) => {
                 inline
                 type="checkbox"
                 name="formalevent"
-                value= {true}
+                value= {items.formalevent}
                 label = "formalevent"
-                onClick={e => setItems({ ...items, formalevent: e.target.value })}
+                onClick={e => setItems({ ...items, formalevent: !items.formalevent })}
               />
               </div>
               <div>
@@ -177,15 +181,15 @@ const TripForm = (props) => {
                 inline
                 type="checkbox"
                 name="camping"
-                value= {true}
+                value= {items.camping}
                 label = "camping"
-                onClick={e => setItems({ ...items, camping: e.target.value })}
+                onClick={e => setItems({ ...items, camping: !items.camping })}
               />
               </div>
 
       </div>
       <div className='submitbuttondiv'>
-        <button  className='submitbutton' onClick={(event) => createNewTrip(event)} type="submit">Create Your Trip!</button>
+        <Button  className='submitbutton' onClick={(event) => createNewTrip(event)} type="submit">Create Your Trip!</Button>
       </div>
       </Form.Group>
       </Form>

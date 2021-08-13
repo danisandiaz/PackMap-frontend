@@ -1,15 +1,23 @@
-.formcontainer {
-    margin: 5%;
+.button {
+    border: red;
 }
 
+.formcontainer {
+    margin: 5%;
+    margin-bottom: 0%;
+}
 
+h6 {
+    margin-top: 100px;
+    color:rgb(98, 99, 104);
+  }
 
 .submitbuttondiv {
     margin: 10px;
     display: flex;
     align-self: center;
     align-items: center;
-    content-align: center;
+    margin-bottom: 0px;
 
 
 }
@@ -20,6 +28,6 @@
 
     align-self: center;
     align-content: center;
-    color:151232;
+
 
 }
