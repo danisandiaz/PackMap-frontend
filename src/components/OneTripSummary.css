@@ -1,10 +1,21 @@
-.locationheader {
+.createitembutton {
+    margin-left: 47%;
 
-    color:rgb(98, 99, 104);
+}
+.newitembuttondiv {
+    margin-top: 15px;
 
 }
 
 
+.locationheader {
+    color:rgb(98, 99, 104);
+}
+
+.newitembutton {
+    width: 150px;
+    margin-left: 44%;
+}
 
 .packinglist {
     margin-left: 3%;
@@ -18,4 +29,13 @@
 .Summarybody {
     margin-left: 3%;
     height: 100vh;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .newitembutton {
+        width: 150px;
+        margin-left: 27%;
+    }
 }

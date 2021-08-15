@@ -5,7 +5,7 @@ import './Trip.css';
 
 
 
-const Trip = ({showtrip, tripdetails}) => {
+const Trip = ({showtrip, tripdetails, deleteTrip}) => {
 
     return (
         <div className= "triplocation">
@@ -16,7 +16,9 @@ const Trip = ({showtrip, tripdetails}) => {
             <h4 > Trip Name: {tripdetails.name}</h4>
             <div><p>{tripdetails.location} {tripdetails.id}</p></div>
             </Button> 
-            <Button>Delete</Button>
+            <Button
+            onClick={() => {deleteTrip(tripdetails)}} 
+            >Delete</Button>
         </ButtonGroup>
         </div>
         </div>

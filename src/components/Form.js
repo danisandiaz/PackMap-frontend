@@ -46,15 +46,15 @@ const TripForm = (props) => {
 
     console.log(items)
 
-    if (items.swimming === "true"){
+    if (items.swimming === true){
     generateSwimmingItems(newtripid)}
-    if (items.hiking === "true"){
+    if (items.hiking === true){
     generateHikingItems(newtripid)}
-    if (items.sightseeing === "true"){
+    if (items.sightseeing === true){
     generateSightseeingItems(newtripid)}
-    if (items.formalevent === "true"){
+    if (items.formalevent === true){
     generateFormalItems(newtripid)}
-    if (items.camping === "true"){
+    if (items.camping === true){
     generateCampingItems(newtripid)}
 
     console.log("done!");
@@ -68,7 +68,7 @@ const TripForm = (props) => {
     <Container className= 'formcontainer'>
       <Form>
         <Form.Group>
-        <Form.Label htmlFor='trip'><h6>Name Your Trip :</h6></Form.Label>
+        <Form.Label htmlFor='trip'><h6>Name Your Trip!:</h6></Form.Label>
         <Form.Control
           name='trip'
           placeholder='trip'
@@ -151,9 +151,7 @@ const TripForm = (props) => {
                 name="hiking"
                 value={items.hiking}
                 label = "hiking"
-                onClick={(e) => {
-               
-                  setItems({ ...items, hiking: !items.hiking})}}
+                onClick={(e) => {setItems({ ...items, hiking: !items.hiking})}}
               />
               </div>
               <div>
