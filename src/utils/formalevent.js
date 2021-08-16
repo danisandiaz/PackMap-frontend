@@ -13,6 +13,6 @@ export const generateFormalItems = async (trip_id) =>{
         "packed": false
     }
 
-      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, formalattire);
-      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, fancyshoes);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, formalattire);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, fancyshoes);
     };

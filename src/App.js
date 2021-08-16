@@ -1,16 +1,12 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import TripForm from './components/Form.js'
 import SavedTrips from './components/SavedTrips.js'
 import OneTripSummary from './components/OneTripSummary.js'
 import CreateTrip from './components/CreateTrip.js'
-import Login from './components/Login.js'
-
+import Home from './components/Home.js'
 
 import {Navbar, Nav} from 'react-bootstrap'
 import logo from './PackMap.png';
-
-
 import {
   BrowserRouter as Router, Switch, Route
 } from "react-router-dom";
@@ -19,6 +15,8 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 export default function App() {
   const [SelectedTripId, setSelectedTripId] = useState(189);
+  const [TravelerId, setTravelerId] = useState(0);
+
 
   return (
     <div className={"grad"} >
@@ -45,7 +43,10 @@ export default function App() {
         <hr />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home 
+            TravelerId ={TravelerId}
+            setTravelerId= {setTravelerId}
+            />
           </Route>
           <Route path="/about">
             <About />
@@ -53,10 +54,13 @@ export default function App() {
           <Route path="/savedtrips">
             <SavedTrips
               selectTrip={setSelectedTripId}
+              TravelerId={TravelerId}
             />
           </Route>
           <Route exact path="/createtrip">
-            <CreateTrip />
+            <CreateTrip 
+            TravelerId={TravelerId}
+            />
           </Route>
           <Route path="/onetrip">
             <OneTrip
@@ -70,14 +74,6 @@ export default function App() {
   );
 }
 
-
-function Home() {
-  return (
-    <div className="page-height">
-      <Login/>
-    </div>
-  );
-}
 
 function About() {
   return (
@@ -96,8 +92,9 @@ const OneTrip = (props) => {
   return (
     <div>
       <h2>Trip Summary</h2>
-      <OneTripSummary selectTripId = {props.SelectedTripId}
-      
+      <OneTripSummary 
+      selectTripId = {props.SelectedTripId}
+      TravelerId ={props.TravelerId}
       />
 
     </div>

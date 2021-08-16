@@ -1,14 +1,55 @@
 import './Login.css';
-import React from 'react';
-
-
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {
+    BrowserRouter as Router,
+    useHistory
+} from "react-router-dom";
 
 
-const Login = (props) => {
+const Login = ({ TravelerId, setTravelerId }) => {
+    const [userData, setuserData] = useState(
+        { email: '', password: ''}
+    );
+    // const [inputPassword, setinputPassword] = useState()
+    const [retrievedPassword, setretrievedPassword] = useState();
+    const history = useHistory();
+
+
+
+
+
+    const logUserIn = (e) => {
+        e.preventDefault();
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/traveler/${userData.email}`).then((response) => {
+            setretrievedPassword(response.data.password);
+            console.log(TravelerId);
+            console.log(response.data);
+            console.log(response.data.password);
+            console.log(userData.password);
+
+
+
+            console.log("inside the get user function")
+            if (userData.password == response.data.password){
+                console.log("they match!")      
+                setTravelerId(response.data.id)
+            }
+        }).catch((error) => {
+            console.log('Error:', error);
+            alert('Couldn\'t get the user details.');
+            
+        });   
+        console.log(TravelerId)
+        history.push('/savedtrips'); 
+    };
+
+
+
 
     return (
         <div className="login">
@@ -18,7 +59,12 @@ const Login = (props) => {
                     
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control 
+                        type="email" 
+                        placeholder="Enter email" 
+                        onChange={e => setuserData({ ...userData, email: e.target.value })}
+
+                        />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
@@ -26,9 +72,15 @@ const Login = (props) => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control 
+                        type="password" 
+                        placeholder="Password" 
+                        onChange={e => setuserData({ ...userData, password: e.target.value})}
+                        />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+
+
+                    <Button onClick={(e) => logUserIn(e)} variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>

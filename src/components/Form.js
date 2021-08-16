@@ -10,7 +10,9 @@ import { generateHikingItems } from '../utils/hikingitems.js';
 import { generateSightseeingItems } from '../utils/sightseeingitems.js';
 import { generateCampingItems } from '../utils/campingitems.js';
 import { generateFormalItems } from '../utils/formalevent.js';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom";
+import { generateGeneralItems } from '../utils/general.js';
+
+import { useHistory } from "react-router-dom";
 import './Form.css';
 
 
@@ -35,17 +37,17 @@ const TripForm = (props) => {
       "enddate" : formData.enddate,
       "transportation" : formData.transportation
     }
-    console.log(items);
-    console.log(newTrip);
+    // console.log(props.TravelerId)
+    // console.log(items);
+    // console.log(newTrip);
 
-    axios.post(`http://localhost:8080/trips`, newTrip
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/traveler/${props.TravelerId}/trip`, newTrip
     ).then((response) =>{
-    // console.log(newtripid)
     const newtripid = response.data.id
     console.log(newtripid)
-
     console.log(items)
 
+    generateGeneralItems(newtripid)
     if (items.swimming === true){
     generateSwimmingItems(newtripid)}
     if (items.hiking === true){
@@ -58,6 +60,7 @@ const TripForm = (props) => {
     generateCampingItems(newtripid)}
 
     console.log("done!");
+    alert('Sucessfully Created New Trip!');
     });
 
     history.push('/savedtrips');

@@ -3,11 +3,13 @@ import TripForm from './Form.js'
 
 
 
-function CreateTrip() {
+function CreateTrip({TravelerId}) {
     return (
       <div className= "createtrip">
         <h2>Create a new Trip</h2>
-        <TripForm />
+        <TripForm 
+        TravelerId = {TravelerId}
+        />
       </div>
     );
   };

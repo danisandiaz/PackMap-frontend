@@ -13,6 +13,6 @@ export const generateSightseeingItems = async (trip_id) =>{
         "packed": false
     }
 
-      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sneakers);
-      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, camera);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, sneakers);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, camera);
     };

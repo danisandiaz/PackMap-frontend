@@ -7,9 +7,9 @@ export const generateHikingItems = async (trip_id) =>{
         "type": "clothing",
         "packed": false
     }
-    const sunscreen = {
-        "name": "sunscreen",
-        "type": "accessories",
+    const athleticclothing = {
+        "name": "activewear",
+        "type": "clothing",
         "packed": false
     }
     const hikingshoes = {
@@ -18,8 +18,9 @@ export const generateHikingItems = async (trip_id) =>{
         "packed": false
     }
 
-      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, daybag);
-      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sunscreen);
-      const newitem3 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, hikingshoes);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, daybag);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, hikingshoes);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, athleticclothing);
+
 
     };

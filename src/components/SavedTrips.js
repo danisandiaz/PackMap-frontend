@@ -11,15 +11,16 @@ import {
 
 
 
-export default function SavedTrips({ selectTrip }) {
+export default function SavedTrips({ selectTrip, TravelerId }) {
     const [TripsData, setTripsData] = useState([]);
-    const [DeleteItems, setDeleteItems] = useState([]);
     const history = useHistory();
 
+    console.log(TravelerId)
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/trips`).then((response) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/traveler/${TravelerId}/trip`).then((response) => {
             setTripsData(response.data);
+            console.log("retrieved trips!");
         }).catch((error) => {
             console.log('Error:', error);
             alert('Couldn\'t get trips.');
@@ -34,24 +35,16 @@ export default function SavedTrips({ selectTrip }) {
 
 
     const deleteTrip = (trip) => {
-        console.log(trip)
-        console.log(trip.id)
-        // deleteItemsforTrip(trip.id)
-
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/trip/${trip.id}`).then((response) => {
         const newTripsData = TripsData.filter((existingTrip) => {
             return existingTrip.id !== trip.id;
         });
             setTripsData(newTripsData);
-            console.log("deleted trip")
-
         }).catch((error) => {
             console.log('Error:', error);
             alert('Couldn\'t delete the trip.');
         });
         alert('Sucessfully deleted  the trip.');
-        // location.reload();
-
     };
 
     const tripElements = TripsData.map((tripdetails) => {

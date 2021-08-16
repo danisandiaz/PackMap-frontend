@@ -18,8 +18,8 @@ export const generateSwimmingItems = async (trip_id) =>{
         "packed": false
     }
 
-      const newitem1 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, swimmingsuit);
-      const newitem2 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sunscreen);
-      const newitem3 =  await axios.post(`http://localhost:8080/trips/${trip_id}/item`, sandals);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, swimmingsuit);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, sunscreen);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${trip_id}/item`, sandals);
 
     };
