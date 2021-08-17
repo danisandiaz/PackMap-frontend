@@ -4,6 +4,11 @@ import TripForm from './Form.js'
 
 
 function CreateTrip({TravelerId}) {
+  console.log(TravelerId)
+  console.log("inside createtrip")
+
+
+
     return (
       <div className= "createtrip">
         <h2>Create a new Trip</h2>

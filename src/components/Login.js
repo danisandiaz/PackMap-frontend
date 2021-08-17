@@ -15,29 +15,25 @@ const Login = ({ TravelerId, setTravelerId }) => {
     const [userData, setuserData] = useState(
         { email: '', password: ''}
     );
-    // const [inputPassword, setinputPassword] = useState()
-    const [retrievedPassword, setretrievedPassword] = useState();
     const history = useHistory();
 
 
-
-
-
     const logUserIn = (e) => {
+        console.log("debugging")
+
         e.preventDefault();
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/traveler/${userData.email}`).then((response) => {
-            setretrievedPassword(response.data.password);
-            console.log(TravelerId);
-            console.log(response.data);
-            console.log(response.data.password);
-            console.log(userData.password);
-
+            console.log("inside the axios function")
 
 
             console.log("inside the get user function")
+
             if (userData.password == response.data.password){
                 console.log("they match!")      
                 setTravelerId(response.data.id)
+            }
+            else {
+                alert('Couldn\'t get that user matching that password!');
             }
         }).catch((error) => {
             console.log('Error:', error);
@@ -45,7 +41,7 @@ const Login = ({ TravelerId, setTravelerId }) => {
             
         });   
         console.log(TravelerId)
-        history.push('/savedtrips'); 
+        // history.push('/savedtrips'); 
     };
 
 

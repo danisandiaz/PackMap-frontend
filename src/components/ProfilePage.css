@@ -1,3 +1,22 @@
+.logoutbutton {
+  padding-top: 20px;
+}
+
+
+.suitcaseimg {
+  max-width:45%;
+  height:auto;
+  min-width: 340px;
+}
+
 .page-height {
-    height: 100vh;
+    height: 100%;
+  }
+  .profilepage {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 3%;
+
   }

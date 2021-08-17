@@ -14,7 +14,7 @@ const Trip = ({showtrip, tripdetails, deleteTrip}) => {
         <ButtonGroup>
             <Button onClick={() => showtrip(tripdetails.id)} variant="outline-secondary" className= 'tripgroupbutton' id='tripbutton'>
             <h4 > Trip Name: {tripdetails.name}</h4>
-            <div><p>{tripdetails.location} {tripdetails.id}</p></div>
+            <div><p>{tripdetails.location}</p></div>
             </Button> 
             <Button
             onClick={() => {deleteTrip(tripdetails)}} 

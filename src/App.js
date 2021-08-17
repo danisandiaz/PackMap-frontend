@@ -29,7 +29,7 @@ export default function App() {
 
           <Nav className="mr-auto">
 
-            <LinkContainer to="/about"><Nav.Link>About</Nav.Link></LinkContainer>
+            {/* <LinkContainer to="/about"><Nav.Link>About</Nav.Link></LinkContainer> */}
 
             <LinkContainer to="/savedtrips"><Nav.Link>Saved Trips</Nav.Link></LinkContainer>
 
