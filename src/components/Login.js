@@ -24,6 +24,7 @@ const Login = ({ TravelerId, setTravelerId }) => {
         e.preventDefault();
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/traveler/${userData.email}`).then((response) => {
             console.log("inside the axios function")
+            console.log(response)
 
 
             console.log("inside the get user function")
