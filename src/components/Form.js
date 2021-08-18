@@ -60,7 +60,7 @@ const TripForm = (props) => {
     alert('Sucessfully Created New Trip!');
     });
 
-    history.push('/createtrip');
+    history.push('/home');
   };
 
   return (

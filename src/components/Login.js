@@ -1,6 +1,7 @@
 import './Login.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import MakeUser from './MakeUser.js'
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -13,8 +14,10 @@ import {
 
 const Login = ({ TravelerId, setTravelerId }) => {
     const [userData, setuserData] = useState(
-        { email: '', password: ''}
+        { email: '', password: '' }
     );
+    const [NewUserClicked, setNewUserClicked] = useState(false)
+
     const history = useHistory();
 
 
@@ -29,8 +32,8 @@ const Login = ({ TravelerId, setTravelerId }) => {
 
             console.log("inside the get user function")
 
-            if (userData.password == response.data.password){
-                console.log("they match!")      
+            if (userData.password == response.data.password) {
+                console.log("they match!")
                 setTravelerId(response.data.id)
             }
             else {
@@ -39,27 +42,41 @@ const Login = ({ TravelerId, setTravelerId }) => {
         }).catch((error) => {
             console.log('Error:', error);
             alert('Couldn\'t get the user details.');
-            
-        });   
+
+        });
         console.log(TravelerId)
-        // history.push('/savedtrips'); 
+        history.push('/savedtrips');
     };
 
+    const makeuser = (e) => {
+        console.log("switching the page soon makeuser")
+        setNewUserClicked(true)
+    }
 
 
 
+    if (NewUserClicked == true) {
+        return (
+            <div>
+                <MakeUser
+                setNewUserClicked = {setNewUserClicked}
+                />
+            </div>
+        );
+    }
+    if (NewUserClicked == false){
     return (
         <div className="login">
             <Container>
                 <Form>
                     <div className="headerlogin"><h4>Login</h4></div>
-                    
+
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control 
-                        type="email" 
-                        placeholder="Enter email" 
-                        onChange={e => setuserData({ ...userData, email: e.target.value })}
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            onChange={e => setuserData({ ...userData, email: e.target.value })}
 
                         />
                         <Form.Text className="text-muted">
@@ -69,20 +86,27 @@ const Login = ({ TravelerId, setTravelerId }) => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control 
-                        type="password" 
-                        placeholder="Password" 
-                        onChange={e => setuserData({ ...userData, password: e.target.value})}
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={e => setuserData({ ...userData, password: e.target.value })}
                         />
                     </Form.Group>
-
-
-                    <Button onClick={(e) => logUserIn(e)} variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <div className="holderloginbuttons">
+                        <div className="loginbuttons">
+                            <Button onClick={(e) => logUserIn(e)} variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            <div className="break"> </div>
+                            <Button onClick={(e) => makeuser(e)} variant="outline-secondary" type="submit">
+                                Create New Account
+                            </Button>
+                           
+                        </div>
+                    </div>
                 </Form>
             </Container>
-            </div>
-    );
+        </div>
+    )}
 };
 export default Login;

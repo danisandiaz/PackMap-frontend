@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import SavedTrips from './components/SavedTrips.js'
 import OneTripSummary from './components/OneTripSummary.js'
 import CreateTrip from './components/CreateTrip.js'
+import MakeUser from './components/MakeUser.js'
 import Home from './components/Home.js'
 
 import {Navbar, Nav} from 'react-bootstrap'
@@ -67,6 +68,12 @@ export default function App() {
               SelectedTripId={SelectedTripId}
             />
           </Route>
+          <Route path="/createnewuser">
+            <MakeUser
+              // SelectedTripId={SelectedTripId}
+            />
+          </Route>
+
 
         </Switch>
     </Router>
