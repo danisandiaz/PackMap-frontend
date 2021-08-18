@@ -34,8 +34,8 @@ const ProfilePage = ({ TravelerId, setTravelerId }) => {
         <div className="page-height profilepage">
             <Container>
                 <div className="profilepage">
-                    <div>
-                        <h3>Hello! Welcome to PackMap {UserData.fname}!</h3>
+                    <div className="welcomemessage">
+                        <h3>Hello! Welcome to PackMap {UserData.fname} {UserData.lname}!</h3>
                     </div>
                     <img src={suitcase} alt="Suitcase" className="suitcaseimg" />
                     <div className="logoutbutton">

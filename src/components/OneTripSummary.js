@@ -51,7 +51,7 @@ const OneTripSummary = (props) => {
             "type" : newItemForm.type,
             "packed" : newItemForm.packed
           }
-        axios.post(`http://localhost:9090/trips/${currentId}/item`, newItem).then((response) => {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${currentId}/item`, newItem).then((response) => {
             console.log("item create")
         }).catch((error) => {
             console.log('Error:', error);
@@ -62,17 +62,19 @@ const OneTripSummary = (props) => {
 
     const popover = (
         <Popover id="popover-basic">
-            <Popover.Header as="h3">Popover right</Popover.Header>
+            <Popover.Header as="h3">New Item</Popover.Header>
             <Popover.Body>
 
                 <Form>
-                    <Form.Label htmlFor='newItem'><h6>New Item</h6></Form.Label>
+                    <Form.Label htmlFor='newItem'><h6>What do you need to pack?</h6></Form.Label>
                     <Form.Control
                         name='newItem'
                         placeholder='new item'
                         onChange={event => setnewItemForm({ ...newItemForm, name: event.target.value })}
                     />
-                    <Button onClick={(event) => addItem(event)} className="createitembutton" type="submit">Add Your Item!</Button>
+                    <div className="newitem">
+                    <Button onClick={(event) => addItem(event)}  type="submit">Add Your Item!</Button>
+                    </div>
                 </Form>
             </Popover.Body>
         </Popover>
@@ -94,7 +96,9 @@ const OneTripSummary = (props) => {
                 <div className="newitembuttondiv">
 
                     <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+                        <div >
                         <Button className="newitembutton">Add New Item</Button>
+                        </div>
                     </OverlayTrigger>
 
                 </div>

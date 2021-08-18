@@ -12,7 +12,8 @@
 .page-height {
     height: 100%;
   }
-  .profilepage {
+
+.profilepage {
     display:flex;
     align-items: center;
     justify-content: center;
@@ -20,3 +21,7 @@
     padding-bottom: 3%;
 
   }
+
+.welcomemessage {
+  color:#586A74;
+}

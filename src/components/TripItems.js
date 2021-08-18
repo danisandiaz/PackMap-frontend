@@ -5,11 +5,23 @@ import axios from 'axios';
 
 
 export default function TripItems({ items, setItems }) {
+    const [UpdatingItemData, setUpdatingItemData] = useState(
+        {id:'', name:'', packed:'', trip:'', type:''}
+        );
 
+
+    console.log(items)
 
     const updateItem = (singleitem) => {
+        const UpdatingItem = {
+            "name" : singleitem.name,
+            "packed": !singleitem.packed,
+            "type": singleitem.type
+        }
 
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}/item/${singleitem.id}`, singleitem).then((response) => {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/item/${singleitem.id}`, UpdatingItem).then((response) => {
+            console.log(response)
+
             let newItemsState = [...items];
             for(let i = 0; i < newItemsState.length; i++){
                 if(newItemsState[i].id === singleitem.id){
@@ -32,6 +44,7 @@ export default function TripItems({ items, setItems }) {
                 checked={singleitem.packed}
                 onClick={() => { console.log(singleitem);
                     updateItem(singleitem);
+                    console.log(singleitem);
                 }}
             />
         )

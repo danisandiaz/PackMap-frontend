@@ -15,8 +15,6 @@ export default function SavedTrips({ selectTrip, TravelerId }) {
     const [TripsData, setTripsData] = useState([]);
     const history = useHistory();
 
-    console.log(TravelerId)
-
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/traveler/${TravelerId}/trip`).then((response) => {
             setTripsData(response.data);
