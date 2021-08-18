@@ -13,6 +13,7 @@ export default function TripItems({ items, setItems }) {
     console.log(items)
 
     const updateItem = (singleitem) => {
+        
         const UpdatingItem = {
             "name" : singleitem.name,
             "packed": !singleitem.packed,

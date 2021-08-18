@@ -1,7 +1,4 @@
-/* .createitembutton {
-    margin-left: 47%;
 
-} */
 .newitembuttondiv {
     margin-top: 15px;
     display: flex;
@@ -38,11 +35,3 @@
     height: 100vh;
 }
 
-
-
-/* @media screen and (max-width: 900px) {
-    .newitembutton {
-        width: 150px;
-        margin-left: 27%;
-    }
-} */
