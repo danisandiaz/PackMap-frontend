@@ -16,6 +16,7 @@ const OneTripSummary = (props) => {
     const [items, setitems] = useState([]);
     const [newItemForm, setnewItemForm] = useState(
         { name: '', type: 'other', packed: false });
+    const [watchitem, setwatchitem] = useState({});
 
 
     const currentId = props.selectTripId
@@ -38,7 +39,7 @@ const OneTripSummary = (props) => {
             console.log('Error:', error);
             alert('Couldn\'t get trip.');
         });
-    }, [currentId]);
+    }, [currentId, watchitem]);
 
     const addItem = (event) => {
         event.preventDefault();
@@ -51,12 +52,16 @@ const OneTripSummary = (props) => {
             "type" : newItemForm.type,
             "packed" : newItemForm.packed
           }
+
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/trips/${currentId}/item`, newItem).then((response) => {
             console.log("item create")
+            setwatchitem(newItem)
         }).catch((error) => {
             console.log('Error:', error);
             alert('Couldn\'t post new item.');
         });
+        alert('Added new item!');
+        // history.push('/home');
     }
 
 

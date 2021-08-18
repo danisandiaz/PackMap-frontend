@@ -37,9 +37,6 @@ const TripForm = (props) => {
       "enddate" : formData.enddate,
       "transportation" : formData.transportation
     }
-    // console.log(props.TravelerId)
-    // console.log(items);
-    // console.log(newTrip);
 
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/traveler/${props.TravelerId}/trip`, newTrip
     ).then((response) =>{
@@ -63,7 +60,7 @@ const TripForm = (props) => {
     alert('Sucessfully Created New Trip!');
     });
 
-    history.push('/savedtrips');
+    history.push('/createtrip');
   };
 
   return (
