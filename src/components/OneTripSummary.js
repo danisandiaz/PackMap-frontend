@@ -91,6 +91,7 @@ const OneTripSummary = (props) => {
 
     return (
         <div className="Summarybody">
+            <h4> <span className="locationheader">{displaytrip.name}</span> </h4>
             <h4> <span className="locationheader">Location:</span>{displaytrip.location} </h4>
             <Card className="packinglist">
                 <h4>Packing List</h4>

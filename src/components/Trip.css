@@ -8,8 +8,15 @@
 
 #tripbutton {
     margin-bottom: 0px;
+}
+.tripname {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 
 }
+
 .triplocation {
     margin-left:3%;
 }

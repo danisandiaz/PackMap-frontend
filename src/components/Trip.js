@@ -13,8 +13,9 @@ const Trip = ({showtrip, tripdetails, deleteTrip}) => {
         <div flex-column className= 'tripgroupbutton'>
         <ButtonGroup>
             <Button onClick={() => showtrip(tripdetails.id)} variant="outline-secondary" className= 'tripgroupbutton' id='tripbutton'>
-            <h4 > Trip Name: {tripdetails.name}</h4>
+            <div className="tripname"><h5>Trip Name: </h5> <h4 > {tripdetails.name}</h4></div>
             <div><p>{tripdetails.location}</p></div>
+            <div>{tripdetails.startdate} - {tripdetails.enddate}</div>
             </Button> 
             <Button
             onClick={() => {deleteTrip(tripdetails)}} 

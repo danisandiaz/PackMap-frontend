@@ -69,7 +69,7 @@ const MakeUser = (props) => {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Enter you first name</Form.Label>
+                        <Form.Label>Enter your first name</Form.Label>
                         <Form.Control
                             type="First name"
                             placeholder="First name"
@@ -77,7 +77,7 @@ const MakeUser = (props) => {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Enter you last name</Form.Label>
+                        <Form.Label>Enter your last name</Form.Label>
                         <Form.Control
                             type="Last name"
                             placeholder="Last name"
